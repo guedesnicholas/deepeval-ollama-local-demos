@@ -37,6 +37,37 @@ material-desafio-mes1/
     ├── criterios_geval.md      # critérios prontos da métrica C
     └── README_DEMOS.md         # roteiro de apresentação das demos
 ```
+## Golden Dataset
+
+O dataset de avaliação (goldens) fica em `dataset/loader_datase.py` e é carregado no início de cada suíte de testes.
+
+Cada *golden* representa um caso de teste da chatbot de cosméticos e contém os seguintes campos:
+
+| Campo               | Descrição                                                                 |
+|---------------------|----------------------------------------------------------------------------|
+| `input`              | Pergunta/mensagem enviada pelo usuário ao chatbot                         |
+| `expected_output`    | Resposta esperada (referência) usada como base de comparação              |
+| `retrieval_context`  | Contexto recuperado (RAG), quando aplicável — usado pela `FaithfulnessMetric` |
+| `actual_output`      | Resposta gerada pelo chatbot durante a execução do teste                  |
+
+### Como os goldens são usados
+
+Cada golden é executado como um caso de teste **independente**, via `@pytest.mark.parametrize`, garantindo que a falha de um caso não interrompa a avaliação dos demais.
+
+```python
+from dataset.loader_datase import carregar_goldens
+
+goldens = carregar_goldens()
+```
+
+### Adicionando novos goldens
+
+1. Edite `dataset/loader_datase.py` e inclua um novo item na lista de goldens.
+2. Preencha `input` e `expected_output` obrigatoriamente.
+3. Preencha `retrieval_context` apenas quando houver contexto real recuperado (listas vazias ou com strings vazias são ignoradas automaticamente pela `FaithfulnessMetric`).
+4. Rode a suíte de testes novamente para validar o novo caso:
+
+```
 
 ### O catálogo
 
@@ -77,7 +108,7 @@ Tudo é configurado por **variáveis de ambiente** — nenhuma chave fica no có
 | Variável | Padrão | Descrição |
 | --- | --- | --- |
 | `LLM_PROVIDER` | `ollama` | Provedor do bot: `ollama`, `gemini` ou `groq` |
-| `LLM_MODEL` | conforme provedor | `llama3.2:3b` / `gemini-2.0-flash` / `llama-3.3-70b-versatile` |
+| `LLM_MODEL` | conforme provedor | `llama3.1:8b` / `gemini-2.0-flash` / `llama-3.3-70b-versatile` |
 | `OLLAMA_URL` | `http://localhost:11434` | Endereço do Ollama |
 | `GEMINI_API_KEY` | — | Chave do [Google AI Studio](https://aistudio.google.com) (se `gemini`) |
 | `GROQ_API_KEY` | — | Chave do [Groq Console](https://console.groq.com) (se `groq`) |
@@ -87,7 +118,7 @@ Tudo é configurado por **variáveis de ambiente** — nenhuma chave fica no có
 ### Opção A — Ollama (100% local, custo zero)
 
 ```bash
-ollama pull llama3.2:3b
+ollama pull llama3.1:8b
 python chatbot.py
 ```
 
@@ -152,10 +183,6 @@ deepeval test run metricAnswerRelevancy_test.py      # Answer Relevancy
 deepeval test run metricFaithfulness_test.py         # Faithfulness
 deepeval test run metricGEval_test.py                # G-Eval
 ```
-
-
-O ponto de aprendizado está no campo `reason` que o juiz devolve junto do score — é ele que
-explica *por que* a nota foi baixa.
 
 ## O desafio
 
