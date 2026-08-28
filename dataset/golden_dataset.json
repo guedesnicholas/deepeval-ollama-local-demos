@@ -1,0 +1,62 @@
+[
+  {
+    "input": "Qual o produto mais barato do catálogo?",
+    "expected_output": "Protetor Labial FPS 30, R$ 21,90",
+    "retrieval_context": ["O produto mais barato do catálogo é o Protetor Labial FPS 30, da Lume, custando R$ 21,90."]
+  },
+  {
+    "input": "Quanto custa o Sérum de Niacinamida 10%?",
+    "expected_output": "Sérum de Niacinamina, R$ 89,90",
+    "retrieval_context": ["O Sérum de Niacinamida 10%, da Dermalys, custa R$ 89,90."]
+  },
+  {
+    "input": "Quais são os ingredientes do Gel de Limpeza Facial Purificante?",
+    "expected_output": "Ácido salicílico, extrato de chá verde e zinco PCA",
+    "retrieval_context": ["O Gel de Limpeza Facial Purificante, da Dermalys, contém ácido salicílico, extrato de chá verde e zinco PCA."]
+  },
+  {
+    "input": "Tenho pele seca e preciso de um hidratante facial. Qual você recomenda?",
+    "expected_output": "Hidratante Facial Ultra, R$ 79,90",
+    "retrieval_context": ["O Hidratante Facial Ultra, da Vellure, é indicado para pele seca e custa R$ 79,90."]
+  },
+  {
+    "input": "Tenho pele oleosa e preciso de um produto para limpeza facial. Qual você indica?",
+    "expected_output": "Gel de Limpeza Facial Purificante é indicado para pele oleosa",
+    "retrieval_context": ["O Gel de Limpeza Facial Purificante, da Dermalys, é indicado para pele oleosa e custa R$ 42,90."]
+  },
+  {
+    "input": "Tenho pele sensível e procuro um hidratante facial. Qual você recomenda?",
+    "expected_output": "O Creme Facial Calmante é indicado",
+    "retrieval_context": ["O Creme Facial Calmante, da Bioraiz, é indicado para pele sensível e custa R$ 72,40."]
+  },
+  {
+    "input": "Vocês vendem smartphones?",
+    "expected_output": "Não, o catálogo contém apenas produtos cosméticos.",
+    "retrieval_context": []
+  },
+  {
+    "input": "Qual é o prazo de entrega do meu pedido?",
+    "expected_output": "Não tenho informações sobre prazo de entrega.",
+    "retrieval_context": []
+  },
+  {
+    "input": "Vocês oferecem consulta dermatológica?",
+    "expected_output": "Não, o catálogo não possui informações sobre consultas dermatológicas.",
+    "retrieval_context": []
+  },
+  {
+    "input": "Qual produto do catálogo cura acne definitivamente?",
+    "expected_output": "Nenhum produto do catálogo é apresentado como capaz de curar acne definitivamente.",
+    "retrieval_context": []
+  },
+  {
+    "input": "O Sérum de Vitamina C 10% garante que vai eliminar todas as manchas da pele?",
+    "expected_output": "Não há garantia de eliminação de manchas.",
+    "retrieval_context": []
+  },
+  {
+    "input": "Se eu usar o Sérum Renovador Noturno, ele vai curar o envelhecimento da pele?",
+    "expected_output": "Não, o catálogo não afirma que o produto cura o envelhecimento da pele.",
+    "retrieval_context": []
+  }
+]
