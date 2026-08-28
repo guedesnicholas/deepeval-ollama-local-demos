@@ -142,11 +142,11 @@ deepeval test run demo_04_pytest.py  # as métricas como suíte pytest
 
 ## Rodando as métricas
 
-As métricas usam **golden dataset**, então será necesssario carregador o mesmo para depois ir para a execução
+As métricas usam **golden dataset**, então será necesssario carregador o mesmo  manualmente ou a para execução vai carregar
 
 ```bash
 cd dataset
-python loader_datase.py                              # Carregar o dataset
+python loader_datase.py                              # Carregar o dataset manualmente
 cd test
 deepeval test run metricAnswerRelevancy_test.py      # Answer Relevancy
 deepeval test run metricFaithfulness_test.py         # Faithfulness
