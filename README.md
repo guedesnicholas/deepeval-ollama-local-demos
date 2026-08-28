@@ -20,6 +20,14 @@ material-desafio-mes1/
 ├── catalogo.json          # 25 produtos fictícios (fonte de verdade do bot)
 ├── prompt.txt             # prompt de sistema (intencionalmente problemático)
 ├── GUIA_INSTALACAO.md     # guia passo a passo de setup e do modelo juiz
+├── dataset/
+|     ├── golden_dataset.json
+|     └── loader_datase.json
+├──pytest.txt
+|── test/
+|     ├── metricAnswerRelevancy_test.py
+|     ├── metricFaithfulness_test.py
+|     └── matricGEval_test.py
 └── demos/                 # exemplos progressivos apresentados na masterclass
     ├── juiz.py            # configuração do LLM juiz (Ollama local ou Gemini)
     ├── demo_01_relevancia.py   # Answer Relevancy
@@ -55,6 +63,8 @@ source .venv/bin/activate
 .venv\Scripts\Activate.ps1
 
 pip install requests deepeval
+
+pip install pytest
 ```
 
 Dependências extras conforme o provedor escolhido: `pip install ollama` (juiz local) ou
@@ -129,6 +139,20 @@ python demo_02_fidelidade.py         # Faithfulness: fiel vs. preço/produto inv
 python demo_03_geval.py              # G-Eval: conformidade de claims de cosmético
 deepeval test run demo_04_pytest.py  # as métricas como suíte pytest
 ```
+
+## Rodando as métricas
+
+As métricas usam **golden dataset**, então será necesssario carregador o mesmo para depois ir para a execução
+
+```bash
+cd dataset
+python loader_datase.py                              # Carregar o dataset
+cd test
+deepeval test run metricAnswerRelevancy_test.py      # Answer Relevancy
+deepeval test run metricFaithfulness_test.py         # Faithfulness
+deepeval test run metricGEval_test.py                # G-Eval
+```
+
 
 O ponto de aprendizado está no campo `reason` que o juiz devolve junto do score — é ele que
 explica *por que* a nota foi baixa.
