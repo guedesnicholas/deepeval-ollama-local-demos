@@ -29,11 +29,11 @@ PROVIDER = os.getenv("LLM_PROVIDER", "ollama").lower()
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434")
 
 MODELOS_PADRAO = {
-    "ollama": "llama3.2:3b",
+    "ollama": "llama3.1:latest",
     "gemini": "gemini-2.0-flash",
     "groq": "llama-3.3-70b-versatile",
 }
-MODELO = os.getenv("LLM_MODEL", MODELOS_PADRAO.get(PROVIDER, "llama3.2:3b"))
+MODELO = os.getenv("LLM_MODEL", MODELOS_PADRAO.get(PROVIDER, "llama3.1:latest"))
 TEMPERATURA = 0.3
 TIMEOUT = 120
 
