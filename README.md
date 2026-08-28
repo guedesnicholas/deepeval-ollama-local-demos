@@ -114,6 +114,7 @@ Tudo é configurado por **variáveis de ambiente** — nenhuma chave fica no có
 | `GROQ_API_KEY` | — | Chave do [Groq Console](https://console.groq.com) (se `groq`) |
 | `JUIZ_PROVIDER` | `ollama` | Provedor do juiz nas demos: `ollama` ou `gemini` |
 | `JUIZ_MODEL` | `llama3.2:3b` | Modelo juiz |
+| `TEMPERATURE` | Foi colocado a "Temperature = 0" para dar um controlar a oscilação
 
 ### Opção A — Ollama (100% local, custo zero)
 
